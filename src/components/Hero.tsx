@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-background"
+      className="relative flex min-h-screen flex-col overflow-hidden bg-background lg:flex-row lg:items-center"
     >
       <div
         aria-hidden="true"
@@ -39,130 +39,155 @@ export function Hero() {
 
       <ParticleField className="pointer-events-none absolute inset-0" />
 
-      {/* Content grid - text stacks above video on mobile, sits side by side on desktop */}
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-24 lg:grid-cols-2 lg:gap-12 lg:px-12">
-        {/* TEXT */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="w-full min-w-0 text-left"
+      {/* DESKTOP VIDEO - absolute, right side, edge to edge */}
+      <div className="pointer-events-none absolute top-0 right-0 bottom-0 hidden w-[52%] lg:block">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full"
+          style={{ objectFit: "cover", objectPosition: "center center" }}
         >
-          <motion.span
-            variants={item}
-            className="mb-6 inline-block rounded-full border border-gold/40 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-gold"
-          >
-            Official Haval Dealership &mdash; Pakistan
-          </motion.span>
-
-          <h1 className="font-heading font-bold leading-[1.05]">
-            <motion.span
-              variants={item}
-              className="block text-[clamp(60px,10vw,140px)] text-gold lg:text-[clamp(56px,8vw,112px)]"
-            >
-              HAVAL
-            </motion.span>
-            <motion.span
-              variants={item}
-              className="block text-[clamp(60px,10vw,140px)] text-white lg:text-[clamp(56px,8vw,112px)]"
-            >
-              MOTORS
-            </motion.span>
-          </h1>
-
-          <motion.p
-            variants={item}
-            className="mt-6 max-w-md text-base uppercase tracking-[0.25em] text-gold/70"
-          >
-            Experience Luxury Redefined
-          </motion.p>
-
-          <motion.div
-            variants={item}
-            className="mt-6 h-[2px] w-40 origin-left bg-gradient-to-r from-gold via-gold-soft to-transparent"
+          <source
+            src="https://res.cloudinary.com/kzdq5bo5/video/upload/q_auto,f_auto/v1784211215/car-rotate_zu7fqu.mp4"
+            type="video/mp4"
           />
+        </video>
+        {/* Bottom fade */}
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 right-0"
+          style={{
+            height: "35%",
+            background: "linear-gradient(to top, #0A0A0A 0%, #0A0A0A 15%, transparent 100%)",
+          }}
+        />
+        {/* Left fade */}
+        <div
+          className="pointer-events-none absolute top-0 left-0 bottom-0"
+          style={{
+            width: "25%",
+            background: "linear-gradient(to right, #0A0A0A 0%, transparent 100%)",
+          }}
+        />
+        {/* Top fade */}
+        <div
+          className="pointer-events-none absolute top-0 left-0 right-0"
+          style={{
+            height: "15%",
+            background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)",
+          }}
+        />
+        {/* Gold glow */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 40% 50%, rgba(201,168,76,0.12) 0%, transparent 70%)",
+          }}
+        />
+        {/* Light streak */}
+        <div
+          className="pointer-events-none absolute top-0 bottom-0"
+          style={{
+            width: "2px",
+            background: "linear-gradient(to bottom, transparent, rgba(201,168,76,0.5), transparent)",
+            filter: "blur(3px)",
+            animation: "lightStreak 7s ease-in-out infinite",
+            animationDelay: "3s",
+          }}
+        />
+      </div>
 
-          <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#booking"
-              className="shimmer-btn cursor-pointer rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-[#0a0a0a] transition-transform duration-300 hover:scale-105"
+      {/* TEXT - left side desktop, full width mobile */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 lg:px-12">
+        <div className="w-full lg:w-[48%]">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="w-full min-w-0 text-left"
+          >
+            <motion.span
+              variants={item}
+              className="mb-6 inline-block rounded-full border border-gold/40 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-gold"
             >
-              Book Test Drive
-            </a>
-            <a
-              href="#models"
-              className="shimmer-btn cursor-pointer rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:border-gold hover:text-gold"
+              Official Haval Dealership &mdash; Pakistan
+            </motion.span>
+
+            <h1 className="font-heading font-bold leading-[1.05]">
+              <motion.span
+                variants={item}
+                className="block text-[clamp(60px,10vw,140px)] text-gold lg:text-[clamp(56px,8vw,112px)]"
+              >
+                HAVAL
+              </motion.span>
+              <motion.span
+                variants={item}
+                className="block text-[clamp(60px,10vw,140px)] text-white lg:text-[clamp(56px,8vw,112px)]"
+              >
+                MOTORS
+              </motion.span>
+            </h1>
+
+            <motion.p
+              variants={item}
+              className="mt-6 max-w-md text-base uppercase tracking-[0.25em] text-gold/70"
             >
-              Explore Models
-            </a>
+              Experience Luxury Redefined
+            </motion.p>
+
+            <motion.div
+              variants={item}
+              className="mt-6 h-[2px] w-40 origin-left bg-gradient-to-r from-gold via-gold-soft to-transparent"
+            />
+
+            <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href="#booking"
+                className="shimmer-btn cursor-pointer rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-[#0a0a0a] transition-transform duration-300 hover:scale-105"
+              >
+                Book Test Drive
+              </a>
+              <a
+                href="#models"
+                className="shimmer-btn cursor-pointer rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:border-gold hover:text-gold"
+              >
+                Explore Models
+              </a>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* VIDEO */}
-        <div className="pointer-events-none relative h-[250px] w-full overflow-hidden lg:h-[500px]">
+      {/* MOBILE VIDEO - shows below text, only on mobile */}
+      <div className="w-full px-4 pb-8 lg:hidden">
+        <div className="relative w-full overflow-hidden rounded-xl" style={{ height: "260px" }}>
           <video
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center center",
-            }}
+            className="absolute inset-0 h-full w-full"
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
           >
             <source
               src="https://res.cloudinary.com/kzdq5bo5/video/upload/q_auto,f_auto/v1784211215/car-rotate_zu7fqu.mp4"
               type="video/mp4"
             />
           </video>
-
-          {/* Bottom fade - hides turntable platform */}
+          {/* Bottom fade for mobile */}
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0"
-            style={{
-              height: "35%",
-              background: "linear-gradient(to top, #0A0A0A 0%, #0A0A0A 15%, transparent 100%)",
-            }}
+            className="pointer-events-none absolute bottom-0 left-0 right-0"
+            style={{ height: "30%", background: "linear-gradient(to top, #0A0A0A, transparent)" }}
           />
-
-          {/* Top fade */}
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0"
-            style={{
-              height: "15%",
-              background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)",
-            }}
-          />
-
-          {/* Left fade - blends into text (desktop only) */}
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block"
-            style={{
-              width: "25%",
-              background: "linear-gradient(to right, #0A0A0A 0%, transparent 100%)",
-            }}
-          />
-
-          {/* Gold ambient glow */}
+          {/* Gold glow mobile */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
-              background:
-                "radial-gradient(ellipse 80% 60% at 40% 50%, rgba(201,168,76,0.12) 0%, transparent 70%)",
-            }}
-          />
-
-          {/* Light streak */}
-          <div
-            className="pointer-events-none absolute inset-y-0"
-            style={{
-              width: "2px",
-              background: "linear-gradient(to bottom, transparent, rgba(201,168,76,0.5), transparent)",
-              filter: "blur(3px)",
-              animation: "lightStreak 7s ease-in-out infinite",
-              animationDelay: "3s",
+              background: "radial-gradient(ellipse at center, rgba(201,168,76,0.15) 0%, transparent 70%)",
             }}
           />
         </div>
