@@ -98,7 +98,10 @@ export function VideoShowcase() {
             display: "block",
           }}
         >
-          <source src="/video/haval-showcase.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/kzdq5bo5/video/upload/v1784211581/haval-showcase_mk4oz5.mp4"
+            type="video/mp4"
+          />
         </video>
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-bg-card">

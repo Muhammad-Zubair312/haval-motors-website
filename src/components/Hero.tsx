@@ -53,7 +53,10 @@ export function Hero() {
             filter: "drop-shadow(-20px 0 60px rgba(201,168,76,0.2))",
           }}
         >
-          <source src="/video/car-rotate.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/kzdq5bo5/video/upload/v1784211215/car-rotate_zu7fqu.mp4"
+            type="video/mp4"
+          />
         </video>
 
         {/* Bottom fade - hides turntable platform */}
