@@ -39,82 +39,14 @@ export function Hero() {
 
       <ParticleField className="pointer-events-none absolute inset-0" />
 
-      {/* VIDEO - absolutely positioned, right half, full height, edge to edge */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[55%] lg:block lg:w-[52%]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full"
-          style={{
-            objectFit: "cover",
-            objectPosition: "center center",
-            filter: "drop-shadow(-20px 0 60px rgba(201,168,76,0.2))",
-          }}
-        >
-          <source
-            src="https://res.cloudinary.com/kzdq5bo5/video/upload/v1784211215/car-rotate_zu7fqu.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        {/* Bottom fade - hides turntable platform */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0"
-          style={{
-            height: "35%",
-            background: "linear-gradient(to top, #0A0A0A 0%, #0A0A0A 15%, transparent 100%)",
-          }}
-        />
-
-        {/* Top fade */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0"
-          style={{
-            height: "15%",
-            background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)",
-          }}
-        />
-
-        {/* Left fade - blends into text */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0"
-          style={{
-            width: "25%",
-            background: "linear-gradient(to right, #0A0A0A 0%, transparent 100%)",
-          }}
-        />
-
-        {/* Gold ambient glow */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 40% 50%, rgba(201,168,76,0.12) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Light streak */}
-        <div
-          className="pointer-events-none absolute inset-y-0"
-          style={{
-            width: "2px",
-            background: "linear-gradient(to bottom, transparent, rgba(201,168,76,0.5), transparent)",
-            filter: "blur(3px)",
-            animation: "lightStreak 7s ease-in-out infinite",
-            animationDelay: "3s",
-          }}
-        />
-      </div>
-
-      {/* TEXT - left side in normal container */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 lg:px-12">
+      {/* Content grid - text stacks above video on mobile, sits side by side on desktop */}
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-24 lg:grid-cols-2 lg:gap-12 lg:px-12">
+        {/* TEXT */}
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="w-full min-w-0 text-left lg:w-[48%]"
+          className="w-full min-w-0 text-left"
         >
           <motion.span
             variants={item}
@@ -165,6 +97,75 @@ export function Hero() {
             </a>
           </motion.div>
         </motion.div>
+
+        {/* VIDEO */}
+        <div className="pointer-events-none relative h-[250px] w-full overflow-hidden lg:h-[500px]">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center center",
+            }}
+          >
+            <source
+              src="https://res.cloudinary.com/kzdq5bo5/video/upload/q_auto,f_auto/v1784211215/car-rotate_zu7fqu.mp4"
+              type="video/mp4"
+            />
+          </video>
+
+          {/* Bottom fade - hides turntable platform */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0"
+            style={{
+              height: "35%",
+              background: "linear-gradient(to top, #0A0A0A 0%, #0A0A0A 15%, transparent 100%)",
+            }}
+          />
+
+          {/* Top fade */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0"
+            style={{
+              height: "15%",
+              background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)",
+            }}
+          />
+
+          {/* Left fade - blends into text (desktop only) */}
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block"
+            style={{
+              width: "25%",
+              background: "linear-gradient(to right, #0A0A0A 0%, transparent 100%)",
+            }}
+          />
+
+          {/* Gold ambient glow */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 40% 50%, rgba(201,168,76,0.12) 0%, transparent 70%)",
+            }}
+          />
+
+          {/* Light streak */}
+          <div
+            className="pointer-events-none absolute inset-y-0"
+            style={{
+              width: "2px",
+              background: "linear-gradient(to bottom, transparent, rgba(201,168,76,0.5), transparent)",
+              filter: "blur(3px)",
+              animation: "lightStreak 7s ease-in-out infinite",
+              animationDelay: "3s",
+            }}
+          />
+        </div>
       </div>
     </section>
   );
